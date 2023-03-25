@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<mavlink>
+    <dialect>2</dialect>
+    <!-- define mavlink enum -->
+    <enums>
+        <enum name="LED_MODE">
+            <description>Led status.</description>
+            <entry value="0" name="ENABLE_LED"/>
+            <entry value="1" name="DISABLE_LED"/>
+        </enum>
+    </enums>
+
+    <!-- define mavlink message -->
+    <messages>
+        <message id="23000" name="KR_LED_CONTROL">
+            <description>Turn LED on and off.</description>
+            <field type="uint8_t" name="mode" enum="LED_MODE">Enable or disable.</field>
+            <field type="uint8_t" name="status">On or off.</field>
+        </message>
+    </messages>
+</mavlink>
