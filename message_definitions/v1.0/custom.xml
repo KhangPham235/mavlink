@@ -3,10 +3,19 @@
     <dialect>2</dialect>
     <!-- define mavlink enum -->
     <enums>
-        <enum name="LED_MODE">
+        <enum name="KR_BOOL_MODE">
             <description>Led status.</description>
-            <entry value="0" name="ENABLE_LED"/>
-            <entry value="1" name="DISABLE_LED"/>
+            <entry value="0" name="ENABLE_MODE"/>
+            <entry value="1" name="DISABLE_MODE"/>
+        </enum>
+    </enums>
+
+    <enums>
+        <enum name="KR_VEHICLE_DIR">
+            <description>Led status.</description>
+            <entry value="-1" name="VEHICLE_STOP"/>
+            <entry value="0" name="VEHICLE_BACKWARD"/>
+            <entry value="1" name="VEHICLE_FORWARE"/>
         </enum>
     </enums>
 
@@ -14,8 +23,33 @@
     <messages>
         <message id="23000" name="KR_LED_CONTROL">
             <description>Turn LED on and off.</description>
-            <field type="uint8_t" name="mode" enum="LED_MODE">Enable or disable.</field>
+            <field type="uint8_t" name="mode" enum="KR_BOOL_MODE">Enable or disable.</field>
             <field type="uint8_t" name="status">On or off.</field>
         </message>
     </messages>
+
+    <messages>
+        <message id="23001" name="KR_BUZZER_CONTROL">
+            <description>Turn buzzer on and off.</description>
+            <field type="uint8_t" name="mode" enum="KR_BOOL_MODE">Enable or disable.</field>
+            <field type="uint8_t" name="status">On or off.</field>
+        </message>
+    </messages>
+
+    <messages>
+        <message id="23002" name="KR_STEERING_CONTROL">
+            <description>Rotate steer.</description>
+            <field type="uint8_t" name="mode" enum="KR_BOOL_MODE">Enable or disable.</field>
+            <field type="int8_t" name="angle">Control angle steering.</field>
+        </message>
+    </messages>
+
+    <messages>
+        <message id="23003" name="KR_MOTOR_CONTROL">
+            <description>Control speed and dir of vehicle.</description>
+            <field type="int8_t" name="dir" enum="KR_VEHICLE_DIR">Set direction of vehicle.</field>
+            <field type="uint8_t" name="speed">Set speed of vehicle.</field>
+        </message>
+    </messages>
+
 </mavlink>
