@@ -20,15 +20,9 @@ python pymavlink/tools/mavgen.py \
 # settings
 MAVLINK_PATH=$PWD
 CLIBRARY_PATH=$MAVLINK_PATH/include/mavlink/v$1.0/c_library_v$1
-LIB_MAVLINK_PROJECT_PATH=$MAVLINK_PATH/../../libraries/KR_Mavlink
 
 # delete old c headers
 rm -rf $CLIBRARY_PATH/*
 
 # generate new c headers
-generate_headers protocol $1
-
-# delete old c headers 
-rm -rf $LIB_MAVLINK_PROJECT_PATH/*
-
-cp -rf $CLIBRARY_PATH/* $LIB_MAVLINK_PROJECT_PATH/
+generate_headers custom $1
